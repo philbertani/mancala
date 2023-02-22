@@ -86,7 +86,7 @@ const GPU = (props) => {
     const {renderer,camera} = GL  
     if ( renderer) {
       renderer.setSize(window.innerWidth,window.innerHeight*heightMult)
-      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.aspect = canvasRef.current.clientWidth / canvasRef.current.clientHeight;
       camera.updateProjectionMatrix();
     }
   },[windowSize])

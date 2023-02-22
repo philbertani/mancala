@@ -1,0 +1,106 @@
+body {
+    font-family: sans-serif;
+    margin:0;
+    background: linear-gradient(white,blue);
+    width: 100vw; height:100vh;
+    overflow: hidden;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  label {
+    display: block;
+  }
+  
+  nav a {
+    display: inline-block;
+    margin: 1em;
+  }
+  
+  /* form div {
+    margin: 1em;
+    display: inline-block;
+  } */
+  
+  .flexRow {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start
+  }
+  
+  .gameBoard {
+    position:relative; left:28%; top:0%;
+    width: 40vw; height: 20vh; z-Index:0
+  }
+  
+  .bin{ position: absolute; width: 10%; height:40%; 
+    border-radius:10px;
+    text-align:center; 
+    background-color: rgba(200,200,0,.5)
+  }
+  
+  .homeBase { position:absolute; width:10%; 
+    height:85%; background-color:orange;
+    border-radius:10px;
+    text-align:center; 
+  }
+  
+  .playerData { max-height:20vh; overflow:auto }
+  
+  #canvas {
+    width: 100%;  /* let our container decide our size */
+    height: 100%;
+    display: block;
+    z-Index:-1e7;
+  }
+  
+  #GPUcontainer {
+    position: relative;  /* makes this the origin of its children */
+    overflow: hidden;
+  }
+  
+  #labels {
+    position: relative;  /* let us position ourself inside the container */
+    z-index: 0;          /* make a new stacking context so children don't sort with rest of page */
+    left: 0;             /* make our position the top left of the container */
+    top: 0;
+    color: white;
+  }
+  
+  #labels>div {
+    background-color: rgba(0,0,0,0);
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    white-space: nowrap;
+    position: absolute;  /* let us position them inside the container */
+    left: 0;             /* make their default position the top left of the container */
+    top: 0;
+    cursor: pointer;     /* change the cursor to a hand when over us */
+    font-size:x-large;
+    user-select: none;   /* don't let the text get selected */
+    text-shadow:         /* create a black outline */
+    -1px -1px 0 #000,
+    0   -1px 0 #000,
+    1px -1px 0 #000,
+    1px  0   0 #000,
+    1px  1px 0 #000,
+    0    1px 0 #000,
+    -1px  1px 0 #000,
+    -1px  0   0 #000;
+  }
+  #labels>div:hover {
+    color: red;
+  }
+  
+  .zeroMargin {margin:0}
+  
+  #players {
+    position:fixed;
+    margin-left: 0;
+    left:0vw; top:45px; width:30vw; max-height:50vh; overflow:auto;
+    font-size: 15px; z-Index:200;
+  }

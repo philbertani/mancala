@@ -1,0 +1,28 @@
+{
+  "name": "mancala",
+  "version": "0.1.0",
+  "description": "multiplayer mancala game server",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "cd client && npm install",
+    "build": "npm run build --prefix client",
+    "client": "npm run start --prefix client",
+    "server": "set JWT=shh3 && nodemon server -e html,js,scss --ignore public --ignore client",
+    "start:render": "npm run start-server-render",
+    "start-server-render": "DATABASE_URL=postgres://play:vUnTBCRyYR7kW5FMVc8nW1gts0cqeTzx@dpg-cf5lalla499d72s5g9bg-a/mancala JWT=shh3 SEED=true nodemon server -e html,js,scss --ignore public --ignore client"
+  },
+  "author": "Philip Bertani",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "compression": "^1.7.4",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "pg": "^8.9.0",
+    "sequelize": "^6.28.0"
+  }
+}

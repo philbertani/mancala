@@ -1,11 +1,8 @@
 import React, {useEffect,  useRef, useState} from "react";
 import { useDispatch } from "react-redux";
-import * as THREE from "three"
 import GPU from  "./GPU"
 
 import { executeTurn, endGame } from "../players/playersSlice";
-
-let renderCount = 0
 
 //add num stones, DB login info to .env secret file on render, read in process.env.*
 const initStonesPerBin = 3
@@ -30,7 +27,7 @@ const playerBins = [
   [8,13]  //player 1 can only choose these bins
 ]
 const homeBase = [0,7]
-export const boardConfig = { nextBin, stones:[...initialStones], homeBase, playerBins};
+export const boardConfig = { nextBin, stones:[...initialStones], homeBase, playerBins, newStones:[]};
 
 const Play = (props) => {
 
@@ -102,7 +99,7 @@ const Play = (props) => {
         }
   
         const bgcolors = ['rgba(150,0,150,1)','(255,255,0,1']
-        const colors = ['yellow','purple']
+        //const colors = ['yellow','purple']
 
         const playingGame = activeGame ? (activeGame.gameState=='playing' || activeGame.gameState=='winner') : false 
 
@@ -164,7 +161,7 @@ const Play = (props) => {
   
             for (let i=0; i<6; i++) {
   
-              const myBin = binNum >= myBins[0] && binNum <= myBins[1]
+              //const myBin = binNum >= myBins[0] && binNum <= myBins[1]
   
               binOutput.push(
                 <div 
@@ -257,8 +254,6 @@ const Play = (props) => {
   const canvasRef = useRef()
   const labelsRef = useRef()
   
-  //this was right before GPUdiv
-  //<div key="labelsDiv" id="labels" ref={labelsRef} ></div>,
   return [
 
     <div key="gameContainer" id="gameContainer">

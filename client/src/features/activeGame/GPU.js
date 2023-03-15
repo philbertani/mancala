@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef} from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
+//import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 import { d12Vertices, d20Vertices } from "./geometry"
 
 //https://r105.threejsfundamentals.org/threejs/lessons/threejs-align-html-elements-to-3d.html

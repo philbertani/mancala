@@ -85,7 +85,7 @@ function setCurrentPlayer(id) {
 
 router.put("/endGame", async(req,res,next)=>{
   try {
-    const {id,gameState,winnerInfo} = req.body
+    const {id} = req.body
     const {playerName,opponentName} = games[id]
     players[playerName] = {}
     players[playerName].previousGame = games[id]
@@ -145,6 +145,7 @@ router.put("/executeTurn", async(req,res,next)=> {
 
     games[activeGameId].moves.push({playerNum,binNum})
     games[activeGameId].gameState = "playing"
+    games[activeGameId].justMoved = true
 
     const {gameOver,winnerName,winnerNum} = checkWinner(activeGameId)
     if (gameOver) {
@@ -298,6 +299,7 @@ router.put("/gameRequest", async (req, res, next) => {
       games[gameInfo.id].gameState = "negotiating"
       games[gameInfo.id].display = "false"
       games[gameInfo.id].winnerInfo = ""
+      games[gameInfo.id].justMoved = false
       
       if ( playerName === opponentName ) {
         players[playerName].playingSelf = true

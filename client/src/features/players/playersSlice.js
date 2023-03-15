@@ -74,7 +74,7 @@ export const executeTurn = createAsyncThunk('/api/players/executeTurn', async(ob
 export const endGame  = createAsyncThunk('/api/players/endGame', async(obj)=>{
   try {
     const response = await axios.put('/api/players/endGame',obj)
-    console.log('zzzzzzzzzz endGame',response.data)
+    //console.log('zzzzzzzzzz endGame',response.data)
     return response.data
   } 
   catch(err) {

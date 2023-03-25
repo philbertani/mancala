@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
@@ -28,15 +29,7 @@ const AppRoutes = () => {
         <Routes>
           <Route
             path="/*"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
-          />
-          <Route
-            path="/login"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/signup"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
+            element={<AuthForm />}
           />
         </Routes>
       )}

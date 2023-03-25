@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';   //no need for <Link /> in this case
 import { logout } from '../../app/store';
 import { logoutFromServer } from '../players/playersSlice'
 
@@ -28,11 +28,7 @@ const Navbar = () => {
             </button>
           </div>
         ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
-            <Link style={{margin:"0",marginLeft:"5px",width:"50px"}} to="/login">Login</Link>
-            <Link style={{margin:"0"}} to="/signup">Sign Up</Link>
-          </div>
+          null
         )}
       </nav>
     </div>

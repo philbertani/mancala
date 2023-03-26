@@ -9,7 +9,7 @@
     "client": "npm run start --prefix client",
     "server": "set JWT=shh3 && nodemon server -e html,js,scss --ignore public --ignore client",
     "start:render": "npm run start-server-render",
-    "start-server-render": "DATABASE_URL=postgres://play:vUnTBCRyYR7kW5FMVc8nW1gts0cqeTzx@dpg-cf5lalla499d72s5g9bg-a/mancala JWT=shh3 SEED=true nodemon server -e html,js,scss --ignore public --ignore client"
+    "start-server-render": "nodemon server -e html,js,scss --ignore public --ignore client"
   },
   "author": "Philip Bertani",
   "license": "MIT",

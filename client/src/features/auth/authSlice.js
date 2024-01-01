@@ -9,7 +9,7 @@ import axios from 'axios';
 //set with a different JWT secret 
 //auth will fail no matter what so we have to find
 //a way to delete it
-const TOKEN = 'token3';   //original 'token' key in  localStorage was somehow corrupt
+const TOKEN = 'mancalaToken';   //original 'token' key in  localStorage was somehow corrupt
 
 /*
   THUNKS
@@ -25,6 +25,8 @@ export const me = createAsyncThunk('auth/me', async () => {
           authorization: token,
         },
       });
+
+      console.log('zzzzzzzzz',res.data);
       return res.data;
     } else {
       return {};
@@ -76,6 +78,7 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(me.fulfilled, (state, action) => {
       state.me = action.payload;
+      console.log('got here',state.me);
     });
     builder.addCase(me.rejected, (state, action) => {
       state.error = action.error;

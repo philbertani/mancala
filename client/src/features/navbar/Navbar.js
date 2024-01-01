@@ -23,7 +23,7 @@ const Navbar = () => {
       <nav>
         {isLoggedIn ? (
           <div style={marginL}>
-            <button type="button" onClick={logoutAndRedirectHome}>
+            <button style={{position:"absolute",zIndex:10000}} type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>
           </div>

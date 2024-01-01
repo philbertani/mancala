@@ -15,7 +15,7 @@ const AuthForm = ({ name, displayName }) => {
     console.log("method is",method)
     const formName = method
     const username = evt.target.username.value;
-    const password = evt.target.password.value;
+    const password = "horseshit"; //evt.target.password.value;  //password doesn't matter anymore
     dispatch(authenticate({ username, password, method: formName }));
   };
   
@@ -27,10 +27,14 @@ const AuthForm = ({ name, displayName }) => {
             <small>Username</small>
           </label>
           <input name="username" type="text" />
+
+          {/*
           <label htmlFor="password">
             <small>Password</small>
           </label>
           <input name="password" type="password" />
+          */}
+          
           <br></br>
 
           <button onClick={()=>void setMethod("login")} type="submit" name="authMethod" value="login">Login</button>

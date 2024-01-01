@@ -1,34 +1,63 @@
 const router = require('express').Router();
-const {
-  models: { User },
-} = require('../db');
+const jwt = require('jsonwebtoken');
+
+
 module.exports = router;
 
+const users = {phil:{id:"phil", username:"phil",password:"junk"}};
+
+const generateToken = async function(id) {
+  return jwt.sign({id}, process.env.JWT)
+}
+
+const findByToken = async function(token) {
+  return jwt.verify(token, process.env.JWT);
+}
+
 router.post('/login', async (req, res, next) => {
-  try {
-    res.send({ token: await User.authenticate(req.body) });
-  } catch (err) {
-    next(err);
+
+  console.log('zzzzzzzzzzzzzzzz', users);
+  console.log('xxxxxxxxxxxxxxxx',req.body);
+
+  const {username, password} = req.body;
+
+
+  if ( users[username]) {
+    res.send( { token: await generateToken(username)});
   }
+  else {
+    next( new Error("no user:", username));
+  }
+
 });
 
 router.post('/signup', async (req, res, next) => {
-  try {
-    const user = await User.create(req.body);
-    res.send({ token: await user.generateToken() });
-  } catch (err) {
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      res.status(401).send('User already exists');
-    } else {
-      next(err);
-    }
+
+  const {username,password} = req.body;
+  if ( users[username] ) {
+    res.status(401).send('User already exists');
   }
+  else {
+    users[username] = {id:username, username,password}; 
+    res.send({ token: await generateToken( username ) });
+  }
+
 });
 
 router.get('/me', async (req, res, next) => {
-  try {
-    res.send(await User.findByToken(req.headers.authorization));
-  } catch (ex) {
-    next(ex);
+
+  const token = req.headers.authorization;
+
+  const {id:username} = await findByToken(token);
+
+  console.log('decoded token', username);
+
+  if ( users[username]) {
+    res.send( users[username]);
   }
+  else {
+    next( new Error("no user:", username) );
+  }
+
+
 });
